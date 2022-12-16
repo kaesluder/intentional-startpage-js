@@ -1,0 +1,15 @@
+span.state-edit {
+    display: none;
+}
+
+button.state-edit {
+    display: inline;
+}
+
+input.state-edit {
+    display: inline; 
+}
+
+input.state-display {
+    display: none;
+}
