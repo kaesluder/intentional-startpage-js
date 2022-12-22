@@ -27,6 +27,7 @@ const PageHeading = function (props) {
           <span className={stateClass}>{props.pageHeadingState}</span>
           <input
             id="headerEdit"
+            data-testid="headerEdit"
             type="text"
             className={stateClass}
             defaultValue={props.pageHeadingState}
@@ -36,7 +37,11 @@ const PageHeading = function (props) {
               }
             }}
           />
-          <button className="button is-primary" onClick={toggleStateClass}>
+          <button
+            data-testid="revealEditForm"
+            className="button is-primary"
+            onClick={toggleStateClass}
+          >
             ✎
           </button>
         </h1>
