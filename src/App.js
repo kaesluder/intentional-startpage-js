@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import 'bulma/css/bulma.min.css';
 import PageHeading from './components/PageHeading';
+import WorldTime from './components/WorldTime';
 
 const config = [
   {
@@ -50,10 +51,18 @@ function App() {
     localStorage.setItem('pageHeadingText', newText);
   };
   return (
-    <PageHeading
-      pageHeadingState={pageHeadingState}
-      setter={pageHeadingEditHandler}
-    ></PageHeading>
+    <div>
+      <PageHeading
+        pageHeadingState={pageHeadingState}
+        setter={pageHeadingEditHandler}
+      ></PageHeading>
+      <WorldTime
+        widget="clocks"
+        id="clocks1"
+        title="World Clock"
+        ClockList={['America/New_York', 'America/Los_Angeles']}
+      />
+    </div>
   );
 }
 
