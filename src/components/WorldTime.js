@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DateTime } from 'luxon';
 import './WorldTime.css';
 
 const timeFormat = 'HH:mm ZZZZZ';
 
 const WorldTime = function (props) {
+  const [timeState, setTimeState] = useState(DateTime.utc());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeState(DateTime.utc());
+    }, 15000);
+    return () => clearInterval(interval);
+  }, []);
+
   // Generate a list element from zoneString containing
   // current time.
   const listElement = function (zoneString) {
     return (
       <li key={zoneString} className="is-family-monospace">
-        {DateTime.utc().setZone(zoneString).toFormat(timeFormat)}
+        {timeState.setZone(zoneString).toFormat(timeFormat)}
       </li>
     );
   };
