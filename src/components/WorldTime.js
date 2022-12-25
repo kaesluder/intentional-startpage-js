@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { DateTime } from 'luxon';
 import './WorldTime.css';
+import WorldTimeConfig from './WorldTimeConfig';
 
 const timeFormat = 'HH:mm ZZZZZ';
 
@@ -25,9 +26,12 @@ const WorldTime = function (props) {
   };
 
   return (
-    <div className="menu">
-      <h3 className="menu-label">{props.title}</h3>
-      <ul className="menu-list">{props.ClockList.map(listElement)}</ul>
+    <div>
+      <div className="menu">
+        <h3 className="menu-label">{props.title}</h3>
+        <ul className="menu-list">{props.ClockList.map(listElement)}</ul>
+      </div>
+      <WorldTimeConfig ClockList={props.ClockList} />
     </div>
   );
 };
