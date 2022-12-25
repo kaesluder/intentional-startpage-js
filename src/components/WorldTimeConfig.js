@@ -17,11 +17,12 @@ const WorldTimeConfig = function (props) {
 
   const createTextField = function (timeZone, i) {
     return (
-      <div>
+      <div key={i}>
         <input
           type="text"
           value={timeZone}
           data-testid="WorldTimeEdit"
+          key={`WorldTimeEdit[${i}]`}
           name={`WorldTimeEdit[${i}]`}
           onChange={handleFormChange}
         />
