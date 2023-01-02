@@ -33,7 +33,11 @@ const WorldTime = function (props) {
           {props.widgetSpec.clockList.map(listElement)}
         </ul>
       </div>
-      <WorldTimeConfig ClockList={props.widgetSpec.clockList} />
+      <WorldTimeConfig
+        ClockList={props.widgetSpec.clockList}
+        id={props.widgetSpec.id}
+        handleClockEdit={props.handleClockEdit}
+      />
     </div>
   );
 };

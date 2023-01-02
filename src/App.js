@@ -50,13 +50,24 @@ function App() {
     setPageHeading(newText);
     localStorage.setItem('pageHeadingText', newText);
   };
+
+  const [configState, setConfigState] = useState(config);
+
+  const handleClockEdit = function (id, clockList) {
+    console.log(`handleClockEdit: ${id}`);
+    console.log(clockList);
+  };
+
   return (
     <div>
       <PageHeading
         pageHeadingState={pageHeadingState}
         setter={pageHeadingEditHandler}
       ></PageHeading>
-      <WorldTime widgetSpec={config[2]} />
+      <WorldTime
+        widgetSpec={configState[2]}
+        handleClockEdit={handleClockEdit}
+      />
     </div>
   );
 }

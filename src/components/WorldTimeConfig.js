@@ -15,6 +15,11 @@ const WorldTimeConfig = function (props) {
     );
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.handleClockEdit(props.id, configFormState);
+  };
+
   const createTextField = function (timeZone, i) {
     return (
       <div key={i}>
@@ -36,7 +41,10 @@ const WorldTimeConfig = function (props) {
 
   return (
     <div>
-      <form>{genEditFields(configFormState)}</form>
+      <form onSubmit={handleSubmit}>
+        {genEditFields(configFormState)}
+        <input type="submit" value="Add Task"></input>
+      </form>
     </div>
   );
 };
