@@ -24,7 +24,7 @@ const config = [
     widget: 'clocks',
     id: 'clocks1',
     title: 'Clocks',
-    'clock-list': ['America/New_York', 'America/Los_Angeles'],
+    clockList: ['America/New_York', 'America/Los_Angeles'],
   },
   {
     widget: 'weather',
@@ -56,12 +56,7 @@ function App() {
         pageHeadingState={pageHeadingState}
         setter={pageHeadingEditHandler}
       ></PageHeading>
-      <WorldTime
-        widget="clocks"
-        id="clocks1"
-        title="World Clock"
-        ClockList={['America/New_York', 'America/Los_Angeles']}
-      />
+      <WorldTime widgetSpec={config[2]} />
     </div>
   );
 }

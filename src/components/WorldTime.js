@@ -29,9 +29,11 @@ const WorldTime = function (props) {
     <div>
       <div className="menu">
         <h3 className="menu-label">{props.title}</h3>
-        <ul className="menu-list">{props.ClockList.map(listElement)}</ul>
+        <ul className="menu-list">
+          {props.widgetSpec.clockList.map(listElement)}
+        </ul>
       </div>
-      <WorldTimeConfig ClockList={props.ClockList} />
+      <WorldTimeConfig ClockList={props.widgetSpec.clockList} />
     </div>
   );
 };
