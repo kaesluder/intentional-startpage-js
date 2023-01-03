@@ -8,6 +8,7 @@ const config = [
   {
     widget: 'bookmarks',
     title: 'Comms',
+    id: 'Bookmarks1',
     'bookmark-list': [
       { url: 'https://app.fastmail.com', text: 'fastmail' },
       { url: 'https://discord.com/channels/@me', text: 'discord' },
@@ -16,6 +17,7 @@ const config = [
   {
     widget: 'bookmarks',
     title: 'Comms',
+    id: 'Bookmarks2',
     'bookmark-list': [
       { url: 'https://app.fastmail.com', text: 'fastmail' },
       { url: 'https://discord.com/channels/@me', text: 'discord' },
@@ -48,10 +50,12 @@ const findWidgetByid = (id, xs) => find(propEq('id', id), xs);
 
 const replaceWidget = function (newWidget, widgetList) {
   const index = findIndex(propEq('id', newWidget.id), widgetList);
-  // console.log(`replaceWidget ${newWidget.id}`);
 
-  // console.log(`replaceWidget ${index}`);
-  return update(index, newWidget, widgetList);
+  if (index >= 0) {
+    return update(index, newWidget, widgetList);
+  } else {
+    return undefined;
+  }
 };
 
 function App() {
@@ -72,10 +76,10 @@ function App() {
       findWidgetByid(id, configState)
     );
 
-    // console.log(JSON.stringify(replaceWidget(newWidgetSpec, configState)));
-
-    //    setConfigState(replaceWidget(newWidgetSpec, configState));
-    setConfigState(partial(replaceWidget, [newWidgetSpec]));
+    // sanity check, only seConfigState if the above was successful.
+    if (newWidgetSpec) {
+      setConfigState(partial(replaceWidget, [newWidgetSpec]));
+    }
   };
 
   return (
@@ -92,4 +96,4 @@ function App() {
   );
 }
 
-export default App;
+export { App, config, findWidgetByid, replaceWidget };

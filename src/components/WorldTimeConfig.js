@@ -3,6 +3,10 @@ import { DateTime } from 'luxon';
 import { update, all, reject } from 'ramda';
 import './WorldTimeConfig.css';
 
+// list of all supported time zones
+// save for later
+// const zones = Intl.supportedValuesOf('timeZone');
+
 const isTimeZoneValid = function (tzString) {
   return DateTime.local().setZone(tzString).isValid;
 };
@@ -54,7 +58,7 @@ const WorldTimeConfig = function (props) {
     <div>
       <form onSubmit={handleSubmit}>
         {genEditFields(configFormState)}
-        <input type="submit" value="Add Task"></input>
+        <input type="submit" value="Submit"></input>
       </form>
     </div>
   );
