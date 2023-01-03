@@ -1,5 +1,4 @@
 import React from 'react';
-import { find, assoc, propEq, findIndex, update, partial } from 'ramda';
 import { render, screen } from '@testing-library/react';
 import { App, findWidgetByid, replaceWidget } from './App';
 
